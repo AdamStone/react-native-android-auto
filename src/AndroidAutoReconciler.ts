@@ -163,7 +163,7 @@ const Renderer = Reconciler<
   cancelDeferredCallback() {},
 
   ...({
-    schedulePassiveEffects(fn: Function) {
+    schedulePassiveEffects(fn: () => void) {
       return setTimeout(fn);
     },
     cancelPassiveEffects(handle: number) {
