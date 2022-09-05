@@ -34,6 +34,7 @@
     "react-reconciler": "^0.26.1"
   },
   "devDependencies": {
+    "@types/react-native": "^0.69.6",
     "prettier": "^2.1.2"
   }
 }
