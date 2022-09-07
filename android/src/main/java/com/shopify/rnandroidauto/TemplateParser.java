@@ -110,13 +110,18 @@ public class TemplateParser {
     }
 
     try {
-      builder.setHeaderAction(getHeaderAction(map.getString("headerAction")));
+      Action headerAction = getHeaderAction(map.getString("headerAction"));
+      if (headerAction != null) {
+        builder.setHeaderAction(headerAction);
+      }
     } catch (NoSuchKeyException e) {}
 
     try {
       ReadableMap actionStripMap = map.getMap("actionStrip");
-
-      builder.setActionStrip(parseActionStrip(actionStripMap));
+      ActionStrip actionStrip = parseActionStrip(actionStripMap);
+      if (actionStrip != null) {
+        builder.setActionStrip(actionStrip);
+      }
       builder.setActionStrip(new ActionStrip.Builder().addAction(new Action.Builder().setTitle("More").build()).build()).build();
     } catch (NoSuchKeyException e) {
       Log.d("ReactAuto", "no such key " + e);
@@ -148,7 +153,10 @@ public class TemplateParser {
     if (map != null) {
       builder.setTitle(map.getString("title"));
       try {
-        builder.setBackgroundColor(getColor(map.getString("backgroundColor")));
+        CarColor color = getColor(map.getString("backgroundColor"));
+        if (color != null) {
+          builder.setBackgroundColor(color);
+        }
       } catch (NoSuchKeyException e) {
         Log.d("ReactAUTO", "Couldn't set background color", e);
       }
@@ -202,7 +210,10 @@ public class TemplateParser {
     ReadableArray children = map.getArray("children");
 
     try {
-      builder.setHeaderAction(getHeaderAction(map.getString("headerAction")));
+      Action headerAction = getHeaderAction(map.getString("headerAction"));
+      if (headerAction != null) {
+        builder.setHeaderAction(headerAction);
+      }
     } catch (NoSuchKeyException e) {}
 
     boolean loading;
@@ -234,7 +245,10 @@ public class TemplateParser {
 
     try {
       ReadableMap actionStripMap = map.getMap("actionStrip");
-      builder.setActionStrip(parseActionStrip(actionStripMap));
+      ActionStrip actionStrip = parseActionStrip(actionStripMap);
+      if (actionStrip != null) {
+        builder.setActionStrip(actionStrip);
+      }
     } catch (NoSuchKeyException e) {}
 
     return builder.build();
@@ -246,7 +260,10 @@ public class TemplateParser {
 
       try {
           ReadableMap actionStripMap = map.getMap("actionStrip");
-          builder.setActionStrip(parseActionStrip(actionStripMap));
+          ActionStrip actionStrip = parseActionStrip(actionStripMap);
+          if (actionStrip != null) {
+            builder.setActionStrip(actionStrip);
+          }
       } catch (NoSuchKeyException e) {
           Log.d(TAG, "NavigationTemplate error " +  e);
       }
@@ -280,12 +297,18 @@ public class TemplateParser {
     }
 
     try {
-      builder.setHeaderAction(getHeaderAction(map.getString("headerAction")));
+      Action headerAction = getHeaderAction(map.getString("headerAction"));
+      if (headerAction != null) {
+        builder.setHeaderAction(headerAction);
+      }
     } catch (NoSuchKeyException e) {}
 
     try {
       ReadableMap actionStripMap = map.getMap("actionStrip");
-      builder.setActionStrip(parseActionStrip(actionStripMap));
+      ActionStrip actionStrip = parseActionStrip(actionStripMap);
+      if (actionStrip != null) {
+        builder.setActionStrip(actionStrip);
+      }
     } catch (NoSuchKeyException e) {}
 
     builder.setTitle(map.getString("title"));
